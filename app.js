@@ -56,13 +56,87 @@ function initSpotlight() {
 }
 
 // ============================================================
-// 3. NAVIGATION — scroll blur
+// 3. NAVIGATION — scroll blur & responsive mobile drawer
 // ============================================================
 function initNav() {
   const nav = document.getElementById('nav');
-  if (!nav) return;
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+  const toggle = document.getElementById('nav-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const closeBtn = document.getElementById('mobile-drawer-close');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const mobileTermBtn = document.getElementById('mobile-terminal-btn');
+  const mobileConnectBtn = document.getElementById('mobile-connect-btn');
+
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  }
+
+  function openDrawer() {
+    if (drawer && toggle) {
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDrawer() {
+    if (drawer && toggle) {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      if (drawer && drawer.classList.contains('open')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+
+  if (drawer) {
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) closeDrawer();
+    });
+  }
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeDrawer();
+    });
+  });
+
+  if (mobileTermBtn) {
+    mobileTermBtn.addEventListener('click', () => {
+      closeDrawer();
+      const openTerm = document.getElementById('open-terminal');
+      if (openTerm) openTerm.click();
+    });
+  }
+
+  if (mobileConnectBtn) {
+    mobileConnectBtn.addEventListener('click', () => {
+      closeDrawer();
+      const openModal = document.getElementById('open-modal');
+      if (openModal) openModal.click();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
   });
 }
 
@@ -568,8 +642,9 @@ function initTerminal() {
   const commands = {
     help: () => `
 <div class="term-line"><span class="term-cyan">Available System Commands:</span></div>
-<div class="term-line">  <span class="term-accent">projects</span>    — List production AI systems & interactive learning hubs</div>
-<div class="term-line">  <span class="term-accent">arcade</span>      — Launch Systems Arcade & Interview Hub (104 Q&As, 7 Simulators)</div>
+<div class="term-line">  <span class="term-accent">projects</span>    — List production systems (Compliance Checker, PulseFit AI, JOB SeArCh)</div>
+<div class="term-line">  <span class="term-accent">compliance</span>  — Inspect Compliance Checker multi-framework audit engine & SAST</div>
+<div class="term-line">  <span class="term-accent">arcade</span>      — Launch Systems Lab & Interview Hub (104 Q&As, 7 Simulators)</div>
 <div class="term-line">  <span class="term-accent">skills</span>      — Inspect full engineering stack & vector DB experience</div>
 <div class="term-line">  <span class="term-accent">curl</span>        — Benchmark API latency (<span class="term-green">curl /api/match</span>)</div>
 <div class="term-line">  <span class="term-accent">metrics</span>     — View production performance telemetry</div>
@@ -578,28 +653,38 @@ function initTerminal() {
 <div class="term-line">  <span class="term-accent">clear</span>       — Wipe the terminal screen buffer</div>
 <div class="term-line">  <span class="term-accent">exit</span>        — Close this terminal window</div>`,
 
+    compliance: () => `
+<div class="term-line"><span class="term-cyan">🛡️ Compliance Checker — Multi-Framework Audit Readiness Engine</span></div>
+<div class="term-line">   • <span class="term-accent">Standards:</span> SOC 2 Type II, ISO/IEC 27001:2022, HIPAA Security Rule, GDPR Article 32</div>
+<div class="term-line">   • <span class="term-accent">Client-Side SAST:</span> In-browser AST parser & Shannon entropy heuristics</div>
+<div class="term-line">   • <span class="term-green">Privacy Guarantee:</span> 100% Local execution in Web Workers with ZERO cloud egress</div>
+<div class="term-line">   • <span class="term-accent">Live Production App:</span> <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="term-accent">https://joelaah.github.io/compliance-checker/</a></div>
+<div class="term-line">   • <span class="term-cyan">GitHub Repository:</span> <a href="https://github.com/joelaah/compliance-checker" target="_blank" class="term-cyan">https://github.com/joelaah/compliance-checker</a></div>`,
+
     projects: () => `
-<div class="term-line"><span class="term-cyan">1. PulseFit AI</span> (Production Two-Stage RAG)</div>
+<div class="term-line"><span class="term-cyan">1. Compliance Checker</span> (Enterprise Audit Readiness & Client-Side SAST)</div>
+<div class="term-line">   • Frameworks: SOC 2, ISO 27001, HIPAA, GDPR Art. 32 | Zero Cloud Egress</div>
+<div class="term-line">   • Live: <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="term-accent">https://joelaah.github.io/compliance-checker/</a></div>
+<br>
+<div class="term-line"><span class="term-cyan">2. PulseFit AI</span> (Production Two-Stage RAG)</div>
 <div class="term-line">   • Stack: Flutter Web, FastAPI, Qdrant Cloud HNSW, Cohere v3.5, Gemini Flash</div>
 <div class="term-line">   • Metrics: &lt;15ms vector recall, 0% arithmetic hallucination, 85% token reduction</div>
 <div class="term-line">   • Live: <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="term-accent">https://joelaah.github.io/fitness_app/</a></div>
 <br>
-<div class="term-line"><span class="term-cyan">2. JOB SeArCh</span> (Autonomous Semantic Career Engine)</div>
+<div class="term-line"><span class="term-cyan">3. JOB SeArCh</span> (Autonomous Semantic Career Engine)</div>
 <div class="term-line">   • Stack: Flutter Web, FastAPI, Supabase pgvector (768d), Grok LLM, Zero-Knowledge Vault</div>
 <div class="term-line">   • Video Reel: 1080p full demo with neural AI voiceover in assets/demo_reel.mp4</div>
 <div class="term-line">   • Live: <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="term-cyan">https://joelaah.github.io/Job-Searcher/</a></div>
 <br>
-<div class="term-line"><span class="term-cyan">3. Systems Arcade Hub</span> (Zero-to-Hero Architecture & Interview Lab)</div>
+<div class="term-line"><span class="term-cyan">4. Systems Engineering Lab</span> (Zero-to-Hero Architecture & Interview Lab)</div>
 <div class="term-line">   • Content: 104 Systems Q&As, 7 Interactive Simulation Labs, 3-Min Blitz Mode</div>
-<div class="term-line">   • Design Rationale: Gamified Neo-Brutalist arcade style combating cognitive working memory exhaustion</div>
-<div class="term-line">   • Live: <a href="interactive_learning_hub.html" target="_blank" class="term-accent">Open Systems Arcade ↗</a></div>`,
+<div class="term-line">   • Live: <a href="interactive_learning_hub.html" target="_blank" class="term-accent">Open Systems Lab ↗</a></div>`,
 
     arcade: () => `
-<div class="term-line"><span class="term-cyan">⚡ Systems Arcade — Zero-to-Hero Interactive Learning Hub</span></div>
+<div class="term-line"><span class="term-cyan">⚡ Systems Engineering Lab & Interview Hub</span></div>
 <div class="term-line">   • <span class="term-accent">Curriculum:</span> 104 Battle-Tested Interview Q&As across 6 engineering domains</div>
 <div class="term-line">   • <span class="term-accent">Simulators:</span> 7 Animated Labs (PostgreSQL MVCC, 768d Vectors, Two-Stage RAG, Anti-SSRF, Zero-Knowledge Vault, Token Bucket, BLoC State)</div>
-<div class="term-line">   • <span class="term-accent">Cognitive Science:</span> Vibrant cartoon styling and 8-bit cues engineered to combat Cowan's working memory exhaustion (4±1 limit) and sustain focus.</div>
-<div class="term-line">   • <span class="term-green">Live Arcade:</span> <a href="interactive_learning_hub.html" target="_blank" class="term-accent">Launch Systems Arcade Hub ↗</a></div>
+<div class="term-line">   • <span class="term-green">Live Hub:</span> <a href="interactive_learning_hub.html" target="_blank" class="term-accent">Launch Systems Engineering Lab ↗</a></div>
 <div class="term-line">   • <span class="term-cyan">Guides:</span> <a href="https://github.com/joelaah/fitness_app/blob/main/MASTER_100_INTERVIEW_QUESTIONS_AND_ANSWERS.md" target="_blank" class="term-cyan">100 Q&A Master Reference</a> | <a href="https://github.com/joelaah/fitness_app/blob/main/ZERO_TO_HERO_SYSTEMS_AND_INTERVIEW_GUIDE.md" target="_blank" class="term-cyan">Zero-to-Hero Systems Guide</a></div>`,
 
     hub: () => commands.arcade(),
