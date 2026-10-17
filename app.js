@@ -3,7 +3,6 @@
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  initLenis();
   initSpotlight();
   initTerminal();
   initNav();
@@ -16,31 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================================
-// 1. LENIS — Smooth Momentum Scrolling
-// ============================================================
-function initLenis() {
-  if (typeof Lenis === 'undefined') return;
-  try {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  } catch (e) {
-    console.warn('Lenis smooth scroll failed to initialize:', e);
-  }
-}
-
-// ============================================================
-// 2. SPOTLIGHT — Dynamic Mouse Radial Card Illumination
+// 1. SPOTLIGHT — Dynamic Mouse Radial Card Illumination
 // ============================================================
 function initSpotlight() {
   const cards = document.querySelectorAll('.spotlight-card');

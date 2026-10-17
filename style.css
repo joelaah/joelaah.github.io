@@ -68,6 +68,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -85,6 +87,7 @@ body {
   color: var(--text-1);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
   min-height: 100vh;
 }
 
