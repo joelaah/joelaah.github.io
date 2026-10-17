@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>JOB SeArCh — Autonomous Career Discovery Architecture | Joel Pachuau</title>
+  <meta name="description" content="Technical deep-dive on JOB SeArCh: Autonomous AI Career Discovery & Semantic Vector Matching Engine powered by Grok LLM, Supabase pgvector (768d), and a Zero-Knowledge RAM Vault.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-header">
+    <nav class="nav scrolled" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Joel Pachuau Homepage">
+          <div class="logo-mark">JP</div>
+          <span class="logo-text">Joel Pachuau</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktop-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active" style="color:var(--accent);">Projects</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="nav-pill-link">Systems Lab ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="nav-resume-link">Resume ↗</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-outline btn-sm desktop-only">🎯 Live App ↗</a>
+          <button class="nav-cli-btn" id="open-terminal" title="Launch Interactive Developer CLI">>_ CLI</button>
+          <button class="nav-cta" id="open-modal">✉ Let's Connect</button>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-header">
+          <div class="nav-logo">
+            <div class="logo-mark">JP</div>
+            <span class="logo-text">Navigation</span>
+          </div>
+          <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-links">
+          <li><a href="index.html" class="mobile-link"><span class="link-icon">🏠</span> Home</a></li>
+          <li><a href="projects.html" class="mobile-link"><span class="link-icon">⚡</span> All Projects &amp; Case Studies</a></li>
+          <li><a href="project-compliance-checker.html" class="mobile-link"><span class="link-icon">🛡️</span> Compliance Checker</a></li>
+          <li><a href="project-pulsefit.html" class="mobile-link"><span class="link-icon">⚡</span> PulseFit AI</a></li>
+          <li><a href="project-job-search.html" class="mobile-link highlight"><span class="link-icon">🎯</span> JOB SeArCh (Current)</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="mobile-link highlight"><span class="link-icon">🕹️</span> Systems Lab (104 Q&amp;As) ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="mobile-link highlight"><span class="link-icon">📄</span> Resume ↗</a></li>
+        </ul>
+        <div class="mobile-drawer-footer">
+          <button class="btn btn-outline" id="mobile-terminal-btn">>_ Developer CLI</button>
+          <button class="btn btn-primary" id="mobile-connect-btn">✉ Contact Joel</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="project-detail-page">
+    <div class="container">
+      
+      <!-- Back Link -->
+      <div class="project-back-wrap">
+        <a href="projects.html" class="back-link">← Back to All Projects</a>
+      </div>
+
+      <header class="project-detail-header">
+        <div class="proj-badge-wrap">
+          <span class="badge badge-cyan">Semantic Search</span>
+          <span class="badge badge-green">Production Live</span>
+          <span class="badge badge-accent">🎬 1080p Walkthrough</span>
+          <span class="badge badge-purple">Grok LLM</span>
+        </div>
+        <h1 class="project-detail-title">JOB SeArCh</h1>
+        <p class="project-detail-tagline">
+          Autonomous AI Career Discovery &amp; Semantic Vector Matching Engine powered by Grok LLM, Supabase pgvector HNSW latent space matching, real-time headless ATS scraping, and a zero-knowledge local credential vault.
+        </p>
+
+        <div class="project-detail-actions">
+          <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-primary">🎯 Launch Live Application ↗</a>
+          <a href="assets/demo_reel.mp4" target="_blank" class="btn btn-outline">🎬 Open Fullscreen Video Reel ↗</a>
+          <a href="https://github.com/joelaah/Job-Searcher" target="_blank" class="btn btn-ghost">GitHub Repository ↗</a>
+        </div>
+      </header>
+
+      <!-- Video Player Spotlight -->
+      <div class="spotlight-player-wrap spotlight-card" style="margin-bottom: 36px;">
+        <div class="spotlight-player-bar">
+          <div class="player-bar-left">
+            <span class="player-dot red"></span>
+            <span class="player-dot yellow"></span>
+            <span class="player-dot green"></span>
+            <span class="player-title">job_search_demonstration_1080p.mp4</span>
+          </div>
+          <div class="player-bar-right">
+            <span class="player-tag">1080p 60FPS</span>
+            <span class="player-tag">Grok LLM</span>
+            <span class="player-tag">ChristopherNeural AI</span>
+          </div>
+        </div>
+        <div class="video-aspect-container">
+          <video class="spotlight-video" controls poster="assets/hero_dashboard.jpg" preload="metadata">
+            <source src="assets/demo_reel.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="spotlight-player-footer">
+          <div class="spotlight-audio-pill">
+            <span class="audio-icon">🔊</span>
+            <span class="audio-text"><strong>Narration Included:</strong> 90s ChristopherNeural Walkthrough (Click video to play sound)</span>
+          </div>
+          <div class="spotlight-actions">
+            <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-primary btn-sm">🎯 Launch Live Web App ↗</a>
+            <a href="https://github.com/joelaah/Job-Searcher" target="_blank" class="btn btn-ghost btn-sm">GitHub Repo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specs Bento Strip -->
+      <section class="project-specs-grid">
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Vector Space</span>
+          <span class="spec-val">768-D HNSW</span>
+          <span class="spec-desc">Cosine similarity indexing in Supabase pgvector</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Inference Model</span>
+          <span class="spec-val">Grok LLM</span>
+          <span class="spec-desc">High-throughput reasoning &amp; adaptive pitch synthesis</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Credential Vault</span>
+          <span class="spec-val">RAM-Only</span>
+          <span class="spec-desc">Zero-knowledge client-side memory with 0 disk writes</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">ATS Scrapers</span>
+          <span class="spec-val">Multi-Source</span>
+          <span class="spec-desc">Headless extraction for Ashby, Greenhouse, Lever</span>
+        </div>
+      </section>
+
+      <!-- Content Body -->
+      <section class="project-content-body">
+        
+        <div class="content-block">
+          <h2>1. The Engineering Challenge: Beating the ATS Black Hole</h2>
+          <p>
+            Traditional job boards rely on keyword matching algorithms that penalise non-standard resumes and obscure true engineering competency behind recruiter buzzwords. Candidates spend hours tailoring applications manually for Applicant Tracking Systems (ATS), resulting in low response rates and severe fatigue.
+          </p>
+          <p>
+            <strong>JOB SeArCh</strong> re-architects this process through geometric vector spaces. Instead of keyword searching, candidate skill profiles and live job descriptions are encoded into high-dimensional semantic vectors using 768-dimensional FastEmbed models.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h2>2. The 5 Architectural Pillars</h2>
+          <div class="frameworks-grid">
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>1. Latent Space Projection</h3>
+                <span class="tag tag-accent">768-D HNSW</span>
+              </div>
+              <p>Projects resumes and candidate achievements into the same mathematical space as scraped job requirements, executing sub-20ms cosine distance searches.</p>
+            </div>
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>2. Grok LLM Reasoning</h3>
+                <span class="tag tag-purple">High-Throughput</span>
+              </div>
+              <p>Filters top semantic candidates, evaluates nuance (remote flexibility, senior vs staff scope), and synthesises personalised recruiter pitches tailored to each company.</p>
+            </div>
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>3. Headless ATS Extraction</h3>
+                <span class="tag tag-green">Ashby · Lever · GH</span>
+              </div>
+              <p>Asynchronous extraction engines parse salary distributions, equity details, and requirement clauses from dynamic client-rendered career pages.</p>
+            </div>
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>4. Zero-Knowledge RAM Vault</h3>
+                <span class="tag tag-security">Zero Storage</span>
+              </div>
+              <p>User credentials and personal tokens reside strictly in volatile browser RAM. Once the session ends or browser tab is closed, all traces are instantly discarded.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>3. Security &amp; Privacy: Zero-Knowledge Invariants</h2>
+          <p>
+            Because automated job search engines frequently handle sensitive candidate data (phone numbers, addresses, salary expectations, LinkedIn tokens), JOB SeArCh enforces strict security invariants:
+          </p>
+          <ul class="features-checklist">
+            <li>✔ <strong>Ephemeral Memory:</strong> All user profiles are loaded into Flutter BLoC state streams and cleared on unmount.</li>
+            <li>✔ <strong>Anti-SSRF Protection:</strong> Outbound scraping requests through the Python backend validate destination IP ranges, blocking private IPv4/IPv6 loopbacks (`127.0.0.1`, `169.254.169.254`).</li>
+            <li>✔ <strong>1-Click Portal Autofill:</strong> Secure DOM injection assists candidate applications on external portals without storing credentials on third-party servers.</li>
+          </ul>
+        </div>
+
+        <div class="content-block project-next-banner spotlight-card">
+          <div class="next-banner-inner">
+            <div>
+              <h3>Explore Compliance Checker</h3>
+              <p>Review the Multi-Framework Audit Readiness Engine with client-side SAST.</p>
+            </div>
+            <div class="next-banner-actions">
+              <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-primary">Launch JOB SeArCh ↗</a>
+              <a href="project-compliance-checker.html" class="btn btn-outline">Compliance Checker Deep-Dive →</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="project-compliance-checker.html">Compliance Checker</a>
+        <a href="project-pulsefit.html">PulseFit AI</a>
+        <a href="project-job-search.html">JOB SeArCh</a>
+        <a href="interactive_learning_hub.html" target="_blank">Systems Lab</a>
+        <a href="resume.html" target="_blank">Resume</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Joel Pachuau · Full-Stack &amp; AI Systems Engineer</p>
+    </div>
+  </footer>
+
+  <!-- Let's Connect Modal -->
+  <div class="modal-overlay" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-icon">✉</div>
+          <div>
+            <h3 class="modal-title">Initiate Contact</h3>
+            <p class="modal-sub">Direct channels to Joel Pachuau</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-content">
+        <a href="mailto:joelapachuau64@gmail.com" class="modal-link">
+          <span class="modal-link-icon">✉</span>
+          <div>
+            <div class="modal-link-title">Primary Direct Email</div>
+            <div class="modal-link-sub">joelapachuau64@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://github.com/joelaah" target="_blank" class="modal-link">
+          <span class="modal-link-icon">💻</span>
+          <div>
+            <div class="modal-link-title">GitHub Profile</div>
+            <div class="modal-link-sub">github.com/joelaah</div>
+          </div>
+        </a>
+        <a href="resume.html" target="_blank" class="modal-link">
+          <span class="modal-link-icon">📄</span>
+          <div>
+            <div class="modal-link-title">Interactive Resume</div>
+            <div class="modal-link-sub">View Resume (HTML &amp; Print)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal CLI -->
+  <div class="terminal-overlay" id="terminal-overlay" aria-hidden="true">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot-btn red" id="term-close"></span>
+          <span class="dot-btn yellow" id="term-min"></span>
+          <span class="dot-btn green" id="term-max"></span>
+        </div>
+        <div class="terminal-title">joel@systems-node:~ (zsh)</div>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <div class="term-line welcome">
+          <span class="term-cyan">Joel Pachuau — Systems CLI [v2.5.0]</span><br>
+          <span class="term-dim">Type 'help', 'projects', or 'compliance'.</span>
+        </div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="term-prompt">joel@prod:~$</span>
+        <input type="text" id="term-input" class="term-input" placeholder="type a command..." autocomplete="off" />
+      </div>
+    </div>
+  </div>
+
+  <button class="floating-cli-pill" id="floating-cli" title="Launch Interactive Developer CLI">
+    <span class="cli-icon">>_</span>
+    <span class="cli-label">CLI</span>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>

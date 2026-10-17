@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Projects &amp; Systems Architecture | Joel Pachuau</title>
+  <meta name="description" content="Explore production systems engineered by Joel Pachuau: Compliance Checker, PulseFit AI, JOB SeArCh, and the Systems Engineering Lab.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-header">
+    <nav class="nav scrolled" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Joel Pachuau Homepage">
+          <div class="logo-mark">JP</div>
+          <span class="logo-text">Joel Pachuau</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktop-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active" style="color:var(--accent);">Projects</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="nav-pill-link">Systems Lab ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="nav-resume-link">Resume ↗</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-cli-btn" id="open-terminal" title="Launch Interactive Developer CLI">>_ CLI</button>
+          <button class="nav-cta" id="open-modal">✉ Let's Connect</button>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-header">
+          <div class="nav-logo">
+            <div class="logo-mark">JP</div>
+            <span class="logo-text">Navigation</span>
+          </div>
+          <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-links">
+          <li><a href="index.html" class="mobile-link"><span class="link-icon">🏠</span> Home</a></li>
+          <li><a href="projects.html" class="mobile-link highlight"><span class="link-icon">⚡</span> All Projects</a></li>
+          <li><a href="project-compliance-checker.html" class="mobile-link"><span class="link-icon">🛡️</span> Compliance Checker</a></li>
+          <li><a href="project-pulsefit.html" class="mobile-link"><span class="link-icon">⚡</span> PulseFit AI</a></li>
+          <li><a href="project-job-search.html" class="mobile-link"><span class="link-icon">🎯</span> JOB SeArCh</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="mobile-link highlight"><span class="link-icon">🕹️</span> Systems Lab (104 Q&amp;As) ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="mobile-link highlight"><span class="link-icon">📄</span> Resume ↗</a></li>
+        </ul>
+        <div class="mobile-drawer-actions">
+          <button class="btn btn-outline btn-block" id="mobile-terminal-btn">>_ Developer Terminal</button>
+          <button class="btn btn-primary btn-block" id="mobile-connect-btn">✉ Let's Connect</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Projects Gallery Page Content -->
+  <main class="projects-page-wrapper">
+    <div class="container">
+      
+      <header class="section-head section-head--center" style="padding-top: clamp(100px, 14vh, 130px);">
+        <div class="section-label">Engineering Portfolio</div>
+        <h1 class="section-title">Production Systems &amp; Case Studies</h1>
+        <p class="section-desc">
+          Deep architectural case studies for production platforms coupling high-dimensional vector search, automated compliance governance, and deterministic microservices.
+        </p>
+      </header>
+
+      <!-- Projects Grid -->
+      <div class="projects-gallery-grid">
+        
+        <!-- Project 1: Compliance Checker -->
+        <article class="proj-gallery-card spotlight-card">
+          <div class="proj-gallery-media">
+            <img src="assets/compliance_preview.svg" alt="Compliance Checker Preview" class="gallery-img" />
+            <div class="gallery-badge-overlay">
+              <span class="badge badge-security">🛡️ Security &amp; SAST</span>
+              <span class="badge badge-green">Live Web App</span>
+            </div>
+          </div>
+          <div class="proj-gallery-content">
+            <div class="proj-gallery-header">
+              <h2 class="gallery-title">Compliance Checker</h2>
+              <p class="gallery-tagline">Multi-Framework Audit Readiness Engine &amp; In-Browser SAST Secret Scanner</p>
+            </div>
+            <p class="gallery-desc">
+              Automated audit readiness engine evaluating codebases against SOC 2 Type II, ISO 27001, HIPAA, and GDPR. Employs in-browser AST parsing and Shannon entropy heuristics to detect credentials with zero cloud egress.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">TypeScript</span>
+              <span class="proj-tag">Client-Side SAST</span>
+              <span class="proj-tag">SOC 2</span>
+              <span class="proj-tag">ISO 27001</span>
+              <span class="proj-tag">Zero Egress</span>
+            </div>
+            <div class="gallery-card-actions">
+              <a href="project-compliance-checker.html" class="btn btn-primary">📖 Read Case Study →</a>
+              <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-outline">Launch App ↗</a>
+              <a href="https://github.com/joelaah/compliance-checker" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: PulseFit AI -->
+        <article class="proj-gallery-card spotlight-card">
+          <div class="proj-gallery-media">
+            <img src="pulsefit_real_thumbnail.png" alt="PulseFit AI Preview" class="gallery-img" />
+            <div class="gallery-badge-overlay">
+              <span class="badge badge-accent">Production AI</span>
+              <span class="badge badge-green">Live Web App</span>
+            </div>
+          </div>
+          <div class="proj-gallery-content">
+            <div class="proj-gallery-header">
+              <h2 class="gallery-title">PulseFit AI</h2>
+              <p class="gallery-tagline">Two-Stage RAG Fitness Copilot &amp; Deterministic Intelligence Engine</p>
+            </div>
+            <p class="gallery-desc">
+              A production two-stage RAG application eliminating LLM arithmetic hallucinations via deterministic Python volume math, sub-15ms Qdrant Cloud vector search, Cohere cross-encoder reranking, and an offline-first Flutter Web client.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Flutter Web</span>
+              <span class="proj-tag">Python FastAPI</span>
+              <span class="proj-tag">Qdrant HNSW</span>
+              <span class="proj-tag">Cohere v3.5</span>
+              <span class="proj-tag">0% Hallucination</span>
+            </div>
+            <div class="gallery-card-actions">
+              <a href="project-pulsefit.html" class="btn btn-primary">📖 Read Case Study →</a>
+              <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="btn btn-outline">Launch App ↗</a>
+              <a href="https://github.com/joelaah/fitness_app" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: JOB SeArCh -->
+        <article class="proj-gallery-card spotlight-card">
+          <div class="proj-gallery-media">
+            <img src="assets/hero_dashboard.jpg" alt="JOB SeArCh Preview" class="gallery-img" />
+            <div class="gallery-badge-overlay">
+              <span class="badge badge-cyan">Semantic Search</span>
+              <span class="badge badge-green">Live Web App</span>
+              <span class="badge badge-purple">🎬 1080p Walkthrough</span>
+            </div>
+          </div>
+          <div class="proj-gallery-content">
+            <div class="proj-gallery-header">
+              <h2 class="gallery-title">JOB SeArCh</h2>
+              <p class="gallery-tagline">Autonomous AI Career Discovery &amp; Semantic Vector Matching Engine</p>
+            </div>
+            <p class="gallery-desc">
+              Intelligent career matching platform projecting candidate profiles and scraped jobs into a 768-d latent space. Features real-time ATS scrapers (Ashby, Greenhouse, Lever), Grok LLM reasoning, and a zero-knowledge RAM vault.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Flutter Web</span>
+              <span class="proj-tag">Supabase pgvector</span>
+              <span class="proj-tag">Grok LLM</span>
+              <span class="proj-tag">ATS Scrapers</span>
+              <span class="proj-tag">RAM-Only Vault</span>
+            </div>
+            <div class="gallery-card-actions">
+              <a href="project-job-search.html" class="btn btn-primary">📖 Read Case Study →</a>
+              <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-outline">Launch App ↗</a>
+              <a href="https://github.com/joelaah/Job-Searcher" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Systems Engineering Lab Hub -->
+        <article class="proj-gallery-card spotlight-card">
+          <div class="proj-gallery-content" style="grid-column: 1 / -1; padding: clamp(28px, 4vw, 40px);">
+            <div class="proj-gallery-header">
+              <div class="proj-badge-wrap">
+                <span class="badge badge-accent">Interactive Lab</span>
+                <span class="badge badge-green">104 Interview Q&amp;As</span>
+                <span class="badge badge-purple">7 Simulators</span>
+              </div>
+              <h2 class="gallery-title">⚡ Systems Engineering Lab &amp; Interview Hub</h2>
+              <p class="gallery-tagline">Gamified distributed systems laboratory for mastering dense distributed architectures, PostgreSQL MVCC, and vector search invariants.</p>
+            </div>
+            <p class="gallery-desc">
+              Featuring 104 battle-tested technical screen scenarios across 6 core domains, 7 animated interactive state simulators, 3-minute blitz pacing drills, and architectural trade-off proofs.
+            </p>
+            <div class="gallery-card-actions" style="margin-top: 20px;">
+              <a href="interactive_learning_hub.html" target="_blank" class="btn btn-primary">🕹️ Launch Systems Hub (Full Lab) ↗</a>
+              <a href="https://github.com/joelaah/fitness_app/blob/main/MASTER_100_INTERVIEW_QUESTIONS_AND_ANSWERS.md" target="_blank" class="btn btn-outline">100 Q&amp;A Guide ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Connect Modal -->
+  <div class="modal-overlay" id="modal" aria-hidden="true">
+    <div class="modal spotlight-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-x" id="modal-close" aria-label="Close modal">&times;</button>
+      <h3 id="modal-title">Let's Connect</h3>
+      <p class="modal-sub">Open to Full-Stack, AI Engineering, and Backend Systems roles.</p>
+      <div class="modal-links-list">
+        <a href="mailto:joelapachuau64@gmail.com" class="modal-link">
+          <span class="modal-link-icon">✉️</span>
+          <div>
+            <div class="modal-link-title">Email</div>
+            <div class="modal-link-sub">joelapachuau64@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://github.com/joelaah" target="_blank" class="modal-link">
+          <span class="modal-link-icon">💻</span>
+          <div>
+            <div class="modal-link-title">GitHub Profile</div>
+            <div class="modal-link-sub">github.com/joelaah</div>
+          </div>
+        </a>
+        <a href="resume.html" target="_blank" class="modal-link">
+          <span class="modal-link-icon">📄</span>
+          <div>
+            <div class="modal-link-title">Interactive Resume</div>
+            <div class="modal-link-sub">View Resume (HTML &amp; Print)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal CLI -->
+  <div class="terminal-overlay" id="terminal-overlay" aria-hidden="true">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot-btn red" id="term-close"></span>
+          <span class="dot-btn yellow" id="term-min"></span>
+          <span class="dot-btn green" id="term-max"></span>
+        </div>
+        <div class="terminal-title">joel@systems-node:~ (zsh)</div>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <div class="term-line welcome">
+          <span class="term-cyan">Joel Pachuau — Systems CLI [v2.5.0]</span><br>
+          <span class="term-dim">Type 'help', 'projects', or 'compliance'.</span>
+        </div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="term-prompt">joel@prod:~$</span>
+        <input type="text" id="term-input" class="term-input" placeholder="type a command..." autocomplete="off" />
+      </div>
+    </div>
+  </div>
+
+  <button class="floating-cli-pill" id="floating-cli" title="Launch Interactive Developer CLI">
+    <span class="cli-icon">>_</span>
+    <span class="cli-label">CLI</span>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="project-compliance-checker.html">Compliance Checker</a>
+        <a href="project-pulsefit.html">PulseFit AI</a>
+        <a href="project-job-search.html">JOB SeArCh</a>
+        <a href="interactive_learning_hub.html" target="_blank">Systems Lab</a>
+        <a href="resume.html" target="_blank">Resume</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Joel Pachuau · Full-Stack &amp; AI Systems Engineer</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

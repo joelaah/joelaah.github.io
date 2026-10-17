@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Compliance Checker — System Architecture Case Study | Joel Pachuau</title>
+  <meta name="description" content="Technical deep-dive on Compliance Checker: Multi-Framework Audit Readiness Engine (SOC 2, ISO 27001, HIPAA, GDPR) with Client-Side SAST & Zero Cloud Egress.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-header">
+    <nav class="nav scrolled" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Joel Pachuau Homepage">
+          <div class="logo-mark">JP</div>
+          <span class="logo-text">Joel Pachuau</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktop-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active" style="color:var(--accent);">Projects</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="nav-pill-link">Systems Lab ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="nav-resume-link">Resume ↗</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-outline btn-sm desktop-only">🛡️ Live App ↗</a>
+          <button class="nav-cli-btn" id="open-terminal" title="Launch Interactive Developer CLI">>_ CLI</button>
+          <button class="nav-cta" id="open-modal">✉ Let's Connect</button>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-header">
+          <div class="nav-logo">
+            <div class="logo-mark">JP</div>
+            <span class="logo-text">Navigation</span>
+          </div>
+          <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-links">
+          <li><a href="index.html" class="mobile-link"><span class="link-icon">🏠</span> Home</a></li>
+          <li><a href="projects.html" class="mobile-link"><span class="link-icon">⚡</span> All Projects &amp; Case Studies</a></li>
+          <li><a href="project-compliance-checker.html" class="mobile-link highlight"><span class="link-icon">🛡️</span> Compliance Checker (Current)</a></li>
+          <li><a href="project-pulsefit.html" class="mobile-link"><span class="link-icon">⚡</span> PulseFit AI</a></li>
+          <li><a href="project-job-search.html" class="mobile-link"><span class="link-icon">🎯</span> JOB SeArCh</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="mobile-link highlight"><span class="link-icon">🕹️</span> Systems Lab (104 Q&amp;As) ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="mobile-link highlight"><span class="link-icon">📄</span> Resume ↗</a></li>
+        </ul>
+        <div class="mobile-drawer-footer">
+          <button class="btn btn-outline" id="mobile-terminal-btn">>_ Developer CLI</button>
+          <button class="btn btn-primary" id="mobile-connect-btn">✉ Contact Joel</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Project Header -->
+  <main class="project-detail-page">
+    <div class="container">
+      
+      <!-- Breadcrumb / Back Link -->
+      <div class="project-back-wrap">
+        <a href="projects.html" class="back-link">← Back to All Projects</a>
+      </div>
+
+      <header class="project-detail-header">
+        <div class="proj-badge-wrap">
+          <span class="badge badge-security">🛡️ Enterprise Security</span>
+          <span class="badge badge-green">Production Live</span>
+          <span class="badge badge-accent">Client-Side SAST</span>
+          <span class="badge badge-cyan">Zero Egress</span>
+        </div>
+        <h1 class="project-detail-title">Compliance Checker</h1>
+        <p class="project-detail-tagline">
+          Multi-Framework Audit Readiness Engine (SOC 2 Type II, ISO/IEC 27001, HIPAA Security, GDPR Article 32) featuring In-Browser AST Static Analysis &amp; Secret Entropy Detection.
+        </p>
+
+        <div class="project-detail-actions">
+          <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-primary">🛡️ Launch Live Production Engine ↗</a>
+          <a href="https://github.com/joelaah/compliance-checker" target="_blank" class="btn btn-outline">GitHub Repository ↗</a>
+        </div>
+      </header>
+
+      <!-- Featured Visual Preview -->
+      <div class="project-hero-media spotlight-card">
+        <img src="assets/compliance_preview.svg" alt="Compliance Checker Dashboard and Architecture" class="detail-hero-img" />
+      </div>
+
+      <!-- Core Specs Bento Strip -->
+      <section class="project-specs-grid">
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Security Architecture</span>
+          <span class="spec-val">100% Client-Side</span>
+          <span class="spec-desc">Zero codebase or secret transmission to external clouds</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Compliance Frameworks</span>
+          <span class="spec-val">4 Standards</span>
+          <span class="spec-desc">SOC 2 Type II, ISO 27001, HIPAA, GDPR Art. 32</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Static Analysis</span>
+          <span class="spec-val">AST + Shannon</span>
+          <span class="spec-desc">Regex entropy heuristics &amp; tokenized syntax parsing</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Audit Deliverable</span>
+          <span class="spec-val">Scorecards &amp; Plans</span>
+          <span class="spec-desc">Instant remediation blueprints &amp; auditor export</span>
+        </div>
+      </section>
+
+      <!-- Deep Dive Content -->
+      <section class="project-content-body">
+        
+        <div class="content-block">
+          <h2>1. The Engineering Challenge: The Cloud Privacy Paradox</h2>
+          <p>
+            Modern continuous compliance tools (Vanta, Drata, Snyk) frequently require granting broad read permissions across internal private Git repositories or shipping raw source code to external SaaS backend endpoints for vulnerability scanning. For enterprise security teams, defence contractors, and healthcare organisations handling protected health information (PHI), this creates an unacceptable <strong>cloud privacy paradox</strong>: shipping secrets to the cloud to check if secrets are in the cloud.
+          </p>
+          <p>
+            <strong>Compliance Checker</strong> was architected to resolve this paradox by moving the entire static application security testing (SAST) and audit policy evaluation engine directly into the client browser via Web Workers.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h2>2. Multi-Framework Mapping Matrix</h2>
+          <p>
+            The engine standardises compliance checks across four foundational regulatory standards into unified deterministic rules:
+          </p>
+          <div class="frameworks-grid">
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>SOC 2 Type II</h3>
+                <span class="tag tag-green">Trust Services</span>
+              </div>
+              <p>Evaluates Common Criteria (CC6.1 Logical Access, CC6.6 Boundary Defense, CC6.8 Threat Detection, CC7.1 Vulnerability Management) against application configuration files and infrastructure code.</p>
+            </div>
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>ISO/IEC 27001:2022</h3>
+                <span class="tag tag-green">Information Security</span>
+              </div>
+              <p>Enforces Annex A controls (A.8.24 Use of Cryptography, A.8.28 Secure Coding, A.8.9 Configuration Management) with deterministic checks for hardcoded credentials and cipher choices.</p>
+            </div>
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>HIPAA Security Rule</h3>
+                <span class="tag tag-green">45 CFR Part 164</span>
+              </div>
+              <p>Validates technical safeguards (§ 164.312(a)(1) Access Control, § 164.312(c)(1) Integrity, and § 164.312(e)(1) Transmission Security) ensuring end-to-end payload encryption and session timeouts.</p>
+            </div>
+            <div class="framework-card spotlight-card">
+              <div class="framework-header">
+                <h3>GDPR Article 32</h3>
+                <span class="tag tag-green">Data Protection</span>
+              </div>
+              <p>Audits pseudonymisation, data minimisation, and AES-256 client-side at-rest storage invariants before database synchronization.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>3. In-Browser AST &amp; Shannon Entropy Secret Detection</h2>
+          <p>
+            Detecting credentials without false positives requires more than naive regex patterns. Compliance Checker implements a two-stage analysis pipeline:
+          </p>
+          <ol class="deep-list">
+            <li>
+              <strong>Abstract Syntax Tree (AST) Tokenization:</strong> Code is tokenised into AST nodes inside an isolated Web Worker, distinguishing string literals from comments, identifiers, and variable assignments.
+            </li>
+            <li>
+              <strong>Shannon Entropy Calculation:</strong> String literals exceeding 20 characters are evaluated for information entropy:
+              $$\mathcal{H}(X) = -\sum_{i=1}^{n} P(x_i) \log_2 P(x_i)$$
+              Strings with Shannon entropy \(> 3.4\) coupled with token signatures matching AWS keys (`AKIA...`), GitHub PATs (`ghp_...`), JWTs, or private RSA headers are flagged instantly with zero network transmission.
+            </li>
+          </ol>
+        </div>
+
+        <div class="content-block">
+          <h2>4. Key Production Features</h2>
+          <ul class="features-checklist">
+            <li>✔ <strong>Interactive Scoring Gauge:</strong> Real-time 0–100 audit readiness score updated dynamically as policies are verified.</li>
+            <li>✔ <strong>Prioritized Remediation Blueprints:</strong> Step-by-step code patches and config snippets to resolve compliance gaps before external audits.</li>
+            <li>✔ <strong>Auditor-Ready PDF &amp; JSON Export:</strong> Timestamped reports formatted for direct submission to external SOC 2 and ISO compliance auditors.</li>
+            <li>✔ <strong>Zero Network Egress Guarantee:</strong> Built with zero tracking scripts, telemetry beacons, or external API endpoints.</li>
+          </ul>
+        </div>
+
+        <div class="content-block project-next-banner spotlight-card">
+          <div class="next-banner-inner">
+            <div>
+              <h3>Explore Live Production App</h3>
+              <p>Test your configurations or repositories against SOC 2, ISO 27001, HIPAA, and GDPR.</p>
+            </div>
+            <div class="next-banner-actions">
+              <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-primary">Launch Compliance Checker ↗</a>
+              <a href="project-pulsefit.html" class="btn btn-outline">Next: PulseFit AI Deep-Dive →</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="project-compliance-checker.html">Compliance Checker</a>
+        <a href="project-pulsefit.html">PulseFit AI</a>
+        <a href="project-job-search.html">JOB SeArCh</a>
+        <a href="interactive_learning_hub.html" target="_blank">Systems Lab</a>
+        <a href="resume.html" target="_blank">Resume</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Joel Pachuau · Full-Stack &amp; AI Systems Engineer</p>
+    </div>
+  </footer>
+
+  <!-- Let's Connect Modal -->
+  <div class="modal-overlay" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-icon">✉</div>
+          <div>
+            <h3 class="modal-title">Initiate Contact</h3>
+            <p class="modal-sub">Direct channels to Joel Pachuau</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-content">
+        <a href="mailto:joelapachuau64@gmail.com" class="modal-link">
+          <span class="modal-link-icon">✉</span>
+          <div>
+            <div class="modal-link-title">Primary Direct Email</div>
+            <div class="modal-link-sub">joelapachuau64@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://github.com/joelaah" target="_blank" class="modal-link">
+          <span class="modal-link-icon">💻</span>
+          <div>
+            <div class="modal-link-title">GitHub Profile</div>
+            <div class="modal-link-sub">github.com/joelaah</div>
+          </div>
+        </a>
+        <a href="resume.html" target="_blank" class="modal-link">
+          <span class="modal-link-icon">📄</span>
+          <div>
+            <div class="modal-link-title">Interactive Resume</div>
+            <div class="modal-link-sub">View Resume (HTML &amp; Print)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal CLI -->
+  <div class="terminal-overlay" id="terminal-overlay" aria-hidden="true">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot-btn red" id="term-close"></span>
+          <span class="dot-btn yellow" id="term-min"></span>
+          <span class="dot-btn green" id="term-max"></span>
+        </div>
+        <div class="terminal-title">joel@systems-node:~ (zsh)</div>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <div class="term-line welcome">
+          <span class="term-cyan">Joel Pachuau — Systems CLI [v2.5.0]</span><br>
+          <span class="term-dim">Type 'help', 'projects', or 'compliance'.</span>
+        </div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="term-prompt">joel@prod:~$</span>
+        <input type="text" id="term-input" class="term-input" placeholder="type a command..." autocomplete="off" />
+      </div>
+    </div>
+  </div>
+
+  <button class="floating-cli-pill" id="floating-cli" title="Launch Interactive Developer CLI">
+    <span class="cli-icon">>_</span>
+    <span class="cli-label">CLI</span>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PulseFit AI — Two-Stage RAG Architecture Case Study | Joel Pachuau</title>
+  <meta name="description" content="Technical deep-dive on PulseFit AI: Two-stage grounded RAG fitness copilot eliminating 100% of LLM arithmetic hallucinations via deterministic Python volume math, Qdrant HNSW vector search, and Cohere reranking.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-header">
+    <nav class="nav scrolled" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Joel Pachuau Homepage">
+          <div class="logo-mark">JP</div>
+          <span class="logo-text">Joel Pachuau</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktop-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active" style="color:var(--accent);">Projects</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="nav-pill-link">Systems Lab ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="nav-resume-link">Resume ↗</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="btn btn-outline btn-sm desktop-only">⚡ Live App ↗</a>
+          <button class="nav-cli-btn" id="open-terminal" title="Launch Interactive Developer CLI">>_ CLI</button>
+          <button class="nav-cta" id="open-modal">✉ Let's Connect</button>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-header">
+          <div class="nav-logo">
+            <div class="logo-mark">JP</div>
+            <span class="logo-text">Navigation</span>
+          </div>
+          <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-links">
+          <li><a href="index.html" class="mobile-link"><span class="link-icon">🏠</span> Home</a></li>
+          <li><a href="projects.html" class="mobile-link"><span class="link-icon">⚡</span> All Projects &amp; Case Studies</a></li>
+          <li><a href="project-compliance-checker.html" class="mobile-link"><span class="link-icon">🛡️</span> Compliance Checker</a></li>
+          <li><a href="project-pulsefit.html" class="mobile-link highlight"><span class="link-icon">⚡</span> PulseFit AI (Current)</a></li>
+          <li><a href="project-job-search.html" class="mobile-link"><span class="link-icon">🎯</span> JOB SeArCh</a></li>
+          <li><a href="interactive_learning_hub.html" target="_blank" class="mobile-link highlight"><span class="link-icon">🕹️</span> Systems Lab (104 Q&amp;As) ↗</a></li>
+          <li><a href="resume.html" target="_blank" class="mobile-link highlight"><span class="link-icon">📄</span> Resume ↗</a></li>
+        </ul>
+        <div class="mobile-drawer-footer">
+          <button class="btn btn-outline" id="mobile-terminal-btn">>_ Developer CLI</button>
+          <button class="btn btn-primary" id="mobile-connect-btn">✉ Contact Joel</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="project-detail-page">
+    <div class="container">
+      
+      <!-- Back Link -->
+      <div class="project-back-wrap">
+        <a href="projects.html" class="back-link">← Back to All Projects</a>
+      </div>
+
+      <header class="project-detail-header">
+        <div class="proj-badge-wrap">
+          <span class="badge badge-accent">Production AI</span>
+          <span class="badge badge-green">Production Live</span>
+          <span class="badge badge-purple">Two-Stage RAG</span>
+          <span class="badge badge-cyan">0% Math Hallucination</span>
+        </div>
+        <h1 class="project-detail-title">PulseFit AI</h1>
+        <p class="project-detail-tagline">
+          RAG-Powered Fitness Intelligence Copilot &amp; Deterministic Ground Truth Engine eliminating 100% of LLM mathematical hallucinations with sub-15ms vector retrieval and Cohere cross-encoder reranking.
+        </p>
+
+        <div class="project-detail-actions">
+          <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="btn btn-primary">⚡ Launch Live Application ↗</a>
+          <a href="https://github.com/joelaah/fitness_app" target="_blank" class="btn btn-outline">Client Repo (Flutter) ↗</a>
+          <a href="https://github.com/joelaah/fitness-rag-api" target="_blank" class="btn btn-outline">RAG Backend Repo (FastAPI) ↗</a>
+        </div>
+      </header>
+
+      <!-- Featured Image -->
+      <div class="project-hero-media spotlight-card">
+        <img src="pulsefit_real_thumbnail.png" alt="PulseFit AI Production User Interface" class="detail-hero-img" />
+      </div>
+
+      <!-- Specs Bento Strip -->
+      <section class="project-specs-grid">
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Vector Retrieval</span>
+          <span class="spec-val">&lt; 15ms</span>
+          <span class="spec-desc">Qdrant Cloud HNSW index across 768-dim embeddings</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Math Accuracy</span>
+          <span class="spec-val">0% Hallucination</span>
+          <span class="spec-desc">Total tonnage &amp; fatigue computed in pure Python</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Token Efficiency</span>
+          <span class="spec-val">−85% Bloat</span>
+          <span class="spec-desc">Cohere cross-encoder reranks 25 candidates to top 3</span>
+        </div>
+        <div class="spec-card spotlight-card">
+          <span class="spec-label">Client Persistence</span>
+          <span class="spec-val">0ms Local-First</span>
+          <span class="spec-desc">HTML5 localStorage with background Supabase sync</span>
+        </div>
+      </section>
+
+      <!-- Content Body -->
+      <section class="project-content-body">
+        
+        <div class="content-block">
+          <h2>1. The Engineering Challenge: Why Naive LLM Workouts Fail</h2>
+          <p>
+            Large Language Models are probabilistic token generators, not deterministic calculators. When asked to plan hypertrophy workouts or progressive overload progressions, naive single-stage LLMs routinely make dangerous arithmetic errors: hallucinating unrealistic volume jumps (+80kg bench presses), prescribing mutually conflicting intensity zones, or forgetting recovery intervals across training cycles.
+          </p>
+          <p>
+            <strong>PulseFit AI</strong> solves this with a two-stage decoupled architecture: physical ground truth (tonnage, set volumes, fatigue indexes) is calculated deterministically in Python before any LLM prompt is constructed.
+          </p>
+        </div>
+
+        <!-- Architecture Steps Pipeline -->
+        <div class="content-block">
+          <h2>2. The End-to-End Pipeline</h2>
+          <p>Click each step to inspect the production implementation:</p>
+          
+          <div class="arch-steps-container">
+            <div class="arch-steps" id="arch-steps">
+              <button class="arch-step active" data-stage="client" type="button">
+                <span class="arch-step-num">Step 1</span>
+                <span class="arch-step-title">Flutter Client</span>
+                <span class="arch-step-sub">Local-First Storage</span>
+              </button>
+              <button class="arch-step" data-stage="math" type="button">
+                <span class="arch-step-num">Step 2</span>
+                <span class="arch-step-title">Deterministic Math</span>
+                <span class="arch-step-sub">Python Analytics</span>
+              </button>
+              <button class="arch-step" data-stage="vector" type="button">
+                <span class="arch-step-num">Step 3</span>
+                <span class="arch-step-title">Qdrant HNSW</span>
+                <span class="arch-step-sub">768-dim Recall</span>
+              </button>
+              <button class="arch-step" data-stage="rerank" type="button">
+                <span class="arch-step-num">Step 4</span>
+                <span class="arch-step-title">Cohere Reranker</span>
+                <span class="arch-step-sub">Cross-Encoder</span>
+              </button>
+              <button class="arch-step" data-stage="gemini" type="button">
+                <span class="arch-step-num">Step 5</span>
+                <span class="arch-step-title">Gemini Flash</span>
+                <span class="arch-step-sub">Grounded Output</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="arch-panel spotlight-card">
+            <div class="arch-info">
+              <h3 id="arch-title">Flutter Client &amp; Local-First Ingestion</h3>
+              <p id="arch-desc">Built with Flutter (Web &amp; Mobile) using CanvasKit hardware acceleration. Workout logging saves instantly to HTML5 localStorage, guaranteeing sub-millisecond perceived latency even with flaky gym Wi-Fi.</p>
+              <ul class="arch-list" id="arch-list">
+                <li>Optimistic UI updates with offline-first persistence</li>
+                <li>Compiles via shared_preferences_web to browser localStorage</li>
+                <li>Async background sync to Supabase PostgreSQL via anonymous JWTs</li>
+                <li>Structured telemetry: reps, weight (kg), RPE, rest times</li>
+              </ul>
+            </div>
+            <div class="arch-code">
+              <div class="arch-code-header">
+                <span class="arch-code-title">Source Preview</span>
+                <span class="arch-code-lang">Dart</span>
+              </div>
+              <div class="code-scroll-wrap">
+                <pre id="arch-code">// lib/features/workout/services/workout_storage.dart
+Future&lt;void&gt; saveCompletedSession(WorkoutSession session) async {
+  // 1. Instant local persistence (0ms UI latency)
+  await _localPrefs.setString(
+    'last_session', jsonEncode(session.toJson())
+  );
+
+  // 2. Fire-and-forget cloud sync
+  unawaited(_supabaseService.syncSession(session)
+    .catchError((e) =&gt; _markPendingSync(session.id)));
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Live RAG Simulator -->
+        <div class="content-block">
+          <h2>3. Live RAG Simulator</h2>
+          <p>Test the two-stage pipeline with realistic workout telemetry:</p>
+
+          <div class="sim-tabs-wrap">
+            <div class="sim-tabs" id="sim-tabs">
+              <button class="sim-tab active" data-sim="beginner" type="button">🌱 Cold Start (0 History)</button>
+              <button class="sim-tab" data-sim="plateau" type="button">🏋️ Push Plateau (Week 6)</button>
+              <button class="sim-tab" data-sim="deload" type="button">⚠️ Deload Trigger</button>
+            </div>
+          </div>
+
+          <div class="sim-layout">
+            <div class="sim-col">
+              <div class="sim-panel spotlight-card">
+                <div class="sim-panel-title">
+                  <span>Deterministic Stats (Python)</span>
+                  <span class="tag tag-green">Verified</span>
+                </div>
+                <div id="sim-stats" class="sim-stats-content"></div>
+              </div>
+
+              <div class="sim-panel spotlight-card" style="margin-top: 20px;">
+                <div class="sim-panel-title">
+                  <span>Reranked Evidence (Cohere v3.5)</span>
+                  <span class="tag tag-green">Score &gt; 0.85</span>
+                </div>
+                <div id="sim-chunks" class="sim-chunks-content"></div>
+              </div>
+            </div>
+
+            <div class="sim-col">
+              <div class="sim-panel spotlight-card">
+                <div class="sim-panel-title">
+                  <span>Gemini 2.5 Flash Grounded Output</span>
+                  <span class="tag tag-accent">Pydantic JSON</span>
+                </div>
+                <div class="sim-json" id="sim-output"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block project-next-banner spotlight-card">
+          <div class="next-banner-inner">
+            <div>
+              <h3>Explore Next Production System</h3>
+              <p>Discover JOB SeArCh: Autonomous AI Career Discovery Engine with Grok LLM &amp; RAM Vault.</p>
+            </div>
+            <div class="next-banner-actions">
+              <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="btn btn-primary">Launch PulseFit AI ↗</a>
+              <a href="project-job-search.html" class="btn btn-outline">Next: JOB SeArCh Deep-Dive →</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="project-compliance-checker.html">Compliance Checker</a>
+        <a href="project-pulsefit.html">PulseFit AI</a>
+        <a href="project-job-search.html">JOB SeArCh</a>
+        <a href="interactive_learning_hub.html" target="_blank">Systems Lab</a>
+        <a href="resume.html" target="_blank">Resume</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Joel Pachuau · Full-Stack &amp; AI Systems Engineer</p>
+    </div>
+  </footer>
+
+  <!-- Let's Connect Modal -->
+  <div class="modal-overlay" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-icon">✉</div>
+          <div>
+            <h3 class="modal-title">Initiate Contact</h3>
+            <p class="modal-sub">Direct channels to Joel Pachuau</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-content">
+        <a href="mailto:joelapachuau64@gmail.com" class="modal-link">
+          <span class="modal-link-icon">✉</span>
+          <div>
+            <div class="modal-link-title">Primary Direct Email</div>
+            <div class="modal-link-sub">joelapachuau64@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://github.com/joelaah" target="_blank" class="modal-link">
+          <span class="modal-link-icon">💻</span>
+          <div>
+            <div class="modal-link-title">GitHub Profile</div>
+            <div class="modal-link-sub">github.com/joelaah</div>
+          </div>
+        </a>
+        <a href="resume.html" target="_blank" class="modal-link">
+          <span class="modal-link-icon">📄</span>
+          <div>
+            <div class="modal-link-title">Interactive Resume</div>
+            <div class="modal-link-sub">View Resume (HTML &amp; Print)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal CLI -->
+  <div class="terminal-overlay" id="terminal-overlay" aria-hidden="true">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot-btn red" id="term-close"></span>
+          <span class="dot-btn yellow" id="term-min"></span>
+          <span class="dot-btn green" id="term-max"></span>
+        </div>
+        <div class="terminal-title">joel@systems-node:~ (zsh)</div>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <div class="term-line welcome">
+          <span class="term-cyan">Joel Pachuau — Systems CLI [v2.5.0]</span><br>
+          <span class="term-dim">Type 'help', 'projects', or 'compliance'.</span>
+        </div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="term-prompt">joel@prod:~$</span>
+        <input type="text" id="term-input" class="term-input" placeholder="type a command..." autocomplete="off" />
+      </div>
+    </div>
+  </div>
+
+  <button class="floating-cli-pill" id="floating-cli" title="Launch Interactive Developer CLI">
+    <span class="cli-icon">>_</span>
+    <span class="cli-label">CLI</span>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
