@@ -1,0 +1,8 @@
+# Personal learning files (kept local, never pushed to public portfolio)
+personal_learning_*.html
+*.local.*
+.env
+*.log
+__pycache__/
+.DS_Store
+Thumbs.db

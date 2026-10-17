@@ -651,16 +651,15 @@ function initTerminal() {
 <div class="term-line">   • Video Reel: 1080p full demo with neural AI voiceover in assets/demo_reel.mp4</div>
 <div class="term-line">   • Live: <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="term-cyan">https://joelaah.github.io/Job-Searcher/</a></div>
 <br>
-<div class="term-line"><span class="term-cyan">4. Systems Engineering Lab</span> (Zero-to-Hero Architecture & Interview Lab)</div>
-<div class="term-line">   • Content: 104 Systems Q&As, 7 Interactive Simulation Labs, 3-Min Blitz Mode</div>
-<div class="term-line">   • Live: <a href="interactive_learning_hub.html" target="_blank" class="term-accent">Open Systems Lab ↗</a></div>`,
+<div class="term-line"><span class="term-cyan">4. Vector Search & FastAPI Lab</span> (Interactive Architecture Simulator)</div>
+<div class="term-line">   • Content: Multi-Layer Qdrant HNSW Graph, FastAPI Route &amp; Pydantic Validator, 768-D Vector Geometry, Two-Stage RAG</div>
+<div class="term-line">   • Live: <a href="interactive_learning_hub.html" class="term-accent">Open Systems Lab ↗</a></div>`,
 
     arcade: () => `
-<div class="term-line"><span class="term-cyan">⚡ Systems Engineering Lab & Interview Hub</span></div>
-<div class="term-line">   • <span class="term-accent">Curriculum:</span> 104 Battle-Tested Interview Q&As across 6 engineering domains</div>
-<div class="term-line">   • <span class="term-accent">Simulators:</span> 7 Animated Labs (PostgreSQL MVCC, 768d Vectors, Two-Stage RAG, Anti-SSRF, Zero-Knowledge Vault, Token Bucket, BLoC State)</div>
-<div class="term-line">   • <span class="term-green">Live Hub:</span> <a href="interactive_learning_hub.html" target="_blank" class="term-accent">Launch Systems Engineering Lab ↗</a></div>
-<div class="term-line">   • <span class="term-cyan">Guides:</span> <a href="https://github.com/joelaah/fitness_app/blob/main/MASTER_100_INTERVIEW_QUESTIONS_AND_ANSWERS.md" target="_blank" class="term-cyan">100 Q&A Master Reference</a> | <a href="https://github.com/joelaah/fitness_app/blob/main/ZERO_TO_HERO_SYSTEMS_AND_INTERVIEW_GUIDE.md" target="_blank" class="term-cyan">Zero-to-Hero Systems Guide</a></div>`,
+<div class="term-line"><span class="term-cyan">⚡ Vector Search &amp; FastAPI Systems Architecture Lab</span></div>
+<div class="term-line">   • <span class="term-accent">Modules:</span> 4 Interactive Production Simulators</div>
+<div class="term-line">   • <span class="term-accent">Simulators:</span> Multi-Layer Qdrant HNSW Graph Walk, FastAPI Pydantic Validator, 768-D Vector Geometry Playground, Two-Stage RAG Pipeline Stepper</div>
+<div class="term-line">   • <span class="term-green">Live Lab:</span> <a href="interactive_learning_hub.html" class="term-accent">Launch Vector &amp; FastAPI Systems Lab ↗</a></div>`,
 
     hub: () => commands.arcade(),
     learn: () => commands.arcade(),
