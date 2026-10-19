@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="portfolioSkeleton" class="portfolio-skeleton-bar" aria-hidden="true">
+    <div class="portfolio-skeleton-shimmer"></div>
+  </div>
 
   <!-- Navigation -->
   <header class="nav-header">
@@ -89,8 +92,9 @@
         </p>
 
         <div class="project-detail-actions">
-          <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-primary">🛡️ Launch Live Production Engine ↗</a>
-          <a href="https://github.com/joelaah/compliance-checker" target="_blank" class="btn btn-outline">GitHub Repository ↗</a>
+          <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-primary">🚀 Launch Live Sandbox Demo ↗</a>
+          <a href="#interactive-sast-demo" class="btn btn-outline">⚡ 1-Click SAST Sandbox ↓</a>
+          <a href="https://github.com/joelaah/compliance-checker" target="_blank" class="btn btn-ghost">GitHub Repository ↗</a>
         </div>
       </header>
 
@@ -190,7 +194,47 @@
           </ol>
         </div>
 
-        <div class="content-block">
+        <!-- Interactive Live SAST & Secret Sandbox -->
+        <div class="content-block" id="interactive-sast-demo">
+          <h2>3.1 Live Interactive SAST &amp; Secret Sandbox (1-Click Simulator)</h2>
+          <p>Test the client-side AST tokenization and Shannon entropy heuristics across real vulnerability presets:</p>
+
+          <div class="inline-sandbox-widget spotlight-card">
+            <div class="inline-sandbox-header">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent);">⚡ Select Sample Vulnerability Preset:</span>
+              <div class="sandbox-pill-group" id="sast-sim-tabs">
+                <button class="sandbox-pill-btn active" data-sast="secrets" type="button">🔑 Leaked Cloud Secrets</button>
+                <button class="sandbox-pill-btn" data-sast="sqli" type="button">💉 SQL Injection Flaw</button>
+                <button class="sandbox-pill-btn" data-sast="coppa" type="button">👶 COPPA Minor Age Gate</button>
+                <button class="sandbox-pill-btn" data-sast="fonts" type="button">🔤 Google Fonts IP Leak</button>
+                <button class="sandbox-pill-btn" data-sast="secure" type="button">🛡️ Clean Parameterized Code</button>
+              </div>
+            </div>
+
+            <div class="sandbox-output-grid">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.8rem; color: var(--text-3);">
+                  <span>Target Code Snippet</span>
+                  <span id="sast-filename" style="color: var(--accent); font-family: var(--mono);">auth_config.env</span>
+                </div>
+                <pre class="sandbox-code-box" id="sast-code-display"></pre>
+              </div>
+              <div class="sandbox-results-box">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;" id="sast-status-badge">🚨 VULNERABILITY DETECTED</span>
+                    <span style="font-size: 0.78rem; font-family: var(--mono); color: var(--green-bright);" id="sast-latency">AST Parse: 4.2ms</span>
+                  </div>
+                  <div id="sast-details" style="font-size: 0.84rem; line-height: 1.5; color: var(--text-2);"></div>
+                </div>
+                <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                  <span style="font-size: 0.78rem; color: var(--text-3);">Zero cloud data egress</span>
+                  <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-sm btn-primary">🚀 Launch Full ComplianceShield Engine ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
           <h2>4. Key Production Features</h2>
           <ul class="features-checklist">
             <li>✔ <strong>Interactive Scoring Gauge:</strong> Real-time 0–100 audit readiness score updated dynamically as policies are verified.</li>

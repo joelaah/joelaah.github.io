@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="portfolioSkeleton" class="portfolio-skeleton-bar" aria-hidden="true">
+    <div class="portfolio-skeleton-shimmer"></div>
+  </div>
 
   <!-- Navigation -->
   <header class="nav-header">
@@ -89,13 +92,14 @@
 
         <div class="project-detail-actions">
           <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-primary">🎯 Launch Live Application ↗</a>
-          <a href="assets/demo_reel.mp4" target="_blank" class="btn btn-outline">🎬 Open Fullscreen Video Reel ↗</a>
+          <a href="#job-search-sandbox" class="btn btn-outline">⚡ 1-Click Vector Sandbox ↓</a>
+          <a href="assets/demo_reel.mp4" target="_blank" class="btn btn-ghost">🎬 1080p Video Reel ↗</a>
           <a href="https://github.com/joelaah/Job-Searcher" target="_blank" class="btn btn-ghost">GitHub Repository ↗</a>
         </div>
       </header>
 
       <!-- Video Player Spotlight -->
-      <div class="spotlight-player-wrap spotlight-card" style="margin-bottom: 36px;">
+      <div class="spotlight-player-wrap spotlight-card" style="margin-bottom: 24px;">
         <div class="spotlight-player-bar">
           <div class="player-bar-left">
             <span class="player-dot red"></span>
@@ -123,6 +127,46 @@
           <div class="spotlight-actions">
             <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-primary btn-sm">🎯 Launch Live Web App ↗</a>
             <a href="https://github.com/joelaah/Job-Searcher" target="_blank" class="btn btn-ghost btn-sm">GitHub Repo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 768-D Latent Matching Sandbox -->
+      <div class="content-block" id="job-search-sandbox" style="margin-bottom: 36px;">
+        <h2>⚡ 1-Click Semantic Vector Matching Sandbox</h2>
+        <p>Test the 768-dimensional latent space projection and Grok LLM re-ranking across candidate skill profiles:</p>
+
+        <div class="inline-sandbox-widget spotlight-card">
+          <div class="inline-sandbox-header">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan);">⚡ Select Candidate Profile Preset:</span>
+            <div class="sandbox-pill-group" id="vector-sim-tabs">
+              <button class="sandbox-pill-btn active" data-vector="ai_eng" type="button">🤖 Staff AI / Vector Search Engineer</button>
+              <button class="sandbox-pill-btn" data-vector="backend" type="button">⚡ Senior Systems &amp; FastAPI Microservices</button>
+              <button class="sandbox-pill-btn" data-vector="security" type="button">🛡️ DevSecOps &amp; Compliance Architect</button>
+            </div>
+          </div>
+
+          <div class="sandbox-output-grid">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.8rem; color: var(--text-3);">
+                <span>768-D Candidate Profile Embedding</span>
+                <span id="vector-profile-tag" style="color: var(--accent-cyan); font-family: var(--mono);">pgvector HNSW</span>
+              </div>
+              <pre class="sandbox-code-box" id="vector-profile-display"></pre>
+            </div>
+            <div class="sandbox-results-box">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <span style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-cyan);">🎯 TOP SEMANTIC MATCH</span>
+                  <span style="font-size: 0.78rem; font-family: var(--mono); color: var(--green-bright);" id="vector-latency">Recall: 14.8ms</span>
+                </div>
+                <div id="vector-match-details" style="font-size: 0.84rem; line-height: 1.5; color: var(--text-2);"></div>
+              </div>
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 0.78rem; color: var(--text-3);">Grok LLM Contextual Pitch Ready</span>
+                <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-sm btn-primary">🎯 Launch Live JOB SeArCh ↗</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

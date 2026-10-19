@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="portfolioSkeleton" class="portfolio-skeleton-bar" aria-hidden="true">
+    <div class="portfolio-skeleton-shimmer"></div>
+  </div>
 
   <!-- Top Navigation -->
   <header class="nav-header">
@@ -74,9 +77,15 @@
   <header class="hero" id="hero">
     <div class="container hero-layout">
       <div class="hero-text">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          <span>Available for AI &amp; Full-Stack Systems Roles</span>
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+          <div class="hero-badge" style="margin-bottom: 0;">
+            <span class="dot"></span>
+            <span>Available for AI &amp; Full-Stack Systems Roles</span>
+          </div>
+          <div class="serverless-wake-pill" title="Serverless Edge APIs &amp; Inference Models Status">
+            <span class="serverless-dot-pulse"></span>
+            <span>Serverless Edge: Warm (0ms cold start)</span>
+          </div>
         </div>
         <h1>Building <span class="accent-gradient">Intelligent Systems</span> with Deterministic Precision.</h1>
         <p class="hero-desc">
@@ -86,8 +95,21 @@
         <!-- Cohesive, Clean Hero Action Buttons -->
         <div class="hero-btns">
           <a href="projects.html" class="btn btn-primary">⚡ Explore Projects &amp; Case Studies →</a>
-          <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-outline">🛡️ Compliance Checker ↗</a>
+          <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-outline">🛡️ Compliance Sandbox ↗</a>
           <a href="resume.html" target="_blank" class="btn btn-ghost">📄 Resume ↗</a>
+        </div>
+
+        <!-- 1-Click Interactive Demo & Sandbox Hero Callout -->
+        <div class="portfolio-demo-hero-banner spotlight-card">
+          <div class="demo-hero-text">
+            <h4>🚀 1-Click Interactive Demos &amp; Sandboxes</h4>
+            <p>Test live production microservices, AST scanners, and two-stage vector retrieval without setup.</p>
+          </div>
+          <div class="demo-hero-btns">
+            <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn-demo-glow">🛡️ Compliance Sandbox ↗</a>
+            <a href="project-pulsefit.html#sim-tabs" class="btn-demo-glow">⚡ PulseFit RAG Simulator →</a>
+            <a href="interactive_learning_hub.html" target="_blank" class="btn-demo-glow">🕹️ Vector &amp; FastAPI Lab ↗</a>
+          </div>
         </div>
 
         <!-- Hero Stats Bento -->
@@ -236,8 +258,8 @@
               Multi-framework audit readiness engine (SOC 2, ISO 27001, HIPAA, GDPR) with in-browser AST parsing and secret entropy analysis.
             </p>
             <div class="teaser-actions">
-              <a href="project-compliance-checker.html" class="btn btn-sm btn-primary">📖 Read Case Study →</a>
-              <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-sm btn-outline">Live App ↗</a>
+              <a href="https://joelaah.github.io/compliance-checker/" target="_blank" class="btn btn-sm btn-primary">🚀 1-Click Sandbox ↗</a>
+              <a href="project-compliance-checker.html" class="btn btn-sm btn-outline">Read Case Study →</a>
             </div>
           </div>
         </div>
@@ -257,8 +279,8 @@
               Two-stage RAG fitness copilot eliminating 100% of arithmetic hallucinations with sub-15ms Qdrant HNSW vector recall and Cohere reranking.
             </p>
             <div class="teaser-actions">
-              <a href="project-pulsefit.html" class="btn btn-sm btn-primary">📖 Read Case Study →</a>
-              <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="btn btn-sm btn-outline">Live App ↗</a>
+              <a href="project-pulsefit.html#sim-tabs" class="btn btn-sm btn-primary">⚡ Live RAG Simulator →</a>
+              <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="btn btn-sm btn-outline">Live Web App ↗</a>
             </div>
           </div>
         </div>
@@ -278,7 +300,7 @@
               Autonomous career discovery engine with 768-d latent space projection, Grok LLM inference, ATS scrapers, and a zero-knowledge RAM vault.
             </p>
             <div class="teaser-actions">
-              <a href="project-job-search.html" class="btn btn-sm btn-primary">📖 Read Case Study →</a>
+              <a href="assets/demo_reel.mp4" target="_blank" class="btn btn-sm btn-primary">🎬 1080p Video Reel ↗</a>
               <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="btn btn-sm btn-outline">Live App ↗</a>
             </div>
           </div>

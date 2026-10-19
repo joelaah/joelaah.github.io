@@ -2,17 +2,36 @@
 // Joel Pachuau — Systems Portfolio Interactive Engine
 // ============================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
+  // Dismiss initial animated loading skeleton
+  const skeleton = document.getElementById('portfolioSkeleton');
+  if (skeleton && typeof setTimeout !== 'undefined') {
+    setTimeout(() => {
+      skeleton.classList.add('loaded');
+      setTimeout(() => skeleton.remove(), 400);
+    }, 150);
+  }
+
   initSpotlight();
   initTerminal();
   initNav();
   init3DScene();
   initArchitecture();
   initSimulator();
+  initSastSimulator();
+  initVectorSimulator();
   initCopyButtons();
   initModal();
   initVideoDemo();
-});
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+}
 
 // ============================================================
 // 1. SPOTLIGHT — Dynamic Mouse Radial Card Illumination
@@ -520,6 +539,133 @@ function initSimulator() {
   });
 
   render('beginner');
+}
+
+// Interactive SAST Sandbox Simulator for Compliance Case Study
+function initSastSimulator() {
+  const tabs = document.querySelectorAll('#sast-sim-tabs .sandbox-pill-btn');
+  const codeEl = document.getElementById('sast-code-display');
+  const fileEl = document.getElementById('sast-filename');
+  const badgeEl = document.getElementById('sast-status-badge');
+  const latencyEl = document.getElementById('sast-latency');
+  const detailsEl = document.getElementById('sast-details');
+  if (!tabs.length || !codeEl) return;
+
+  const sastScenarios = {
+    secrets: {
+      file: 'config/production.env',
+      code: `AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE\nAWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\nOPENAI_API_KEY=sk-proj-DEMO_TEST_KEY_48291048294829104829\nDATABASE_URL=postgres://root:SuperSecret2024!@cluster.internal:5432/db`,
+      badge: '🚨 CRITICAL SECRET EXPOSURE',
+      badgeColor: '#f43f5e',
+      latency: 'AST Parse: 3.8ms · Shannon H: 4.82 bits/char',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#f43f5e;">Violation:</strong> Hardcoded cloud credentials with high Shannon entropy (>3.4 bits/char).</div><div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Framework Controls:</strong> SOC 2 CC6.1, ISO 27001 A.8.24, NIST CSF PR.AC-1.</div><div style="background:rgba(244,63,94,0.1); border:1px solid rgba(244,63,94,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#fca5a5;">Remediation: Migrate credentials to AWS Secrets Manager or client-side volatile RAM vault.</div>`
+    },
+    sqli: {
+      file: 'controllers/auth.js',
+      code: `app.post('/api/auth/login', async (req, res) => {\n  const { user, pass } = req.body;\n  // CRITICAL: Unsanitized input concatenation allows authentication bypass!\n  const query = "SELECT * FROM users WHERE username = '" + user + "' AND pass = '" + pass + "'";\n  const result = await db.query(query);\n  res.json(result);\n});`,
+      badge: '🚨 SQL INJECTION (CWE-89)',
+      badgeColor: '#f43f5e',
+      latency: 'AST Parse: 2.9ms · AST Nodes: 42',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#f43f5e;">Violation:</strong> Direct string concatenation into database query allows SQL syntax injection.</div><div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Framework Controls:</strong> SOC 2 CC6.6, OWASP Top 10 A03:2021-Injection, ISO 27001 A.8.28.</div><div style="background:rgba(244,63,94,0.1); border:1px solid rgba(244,63,94,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#fca5a5;">Fix: Use parameterized statements ($1, $2) and enforce Row-Level Security (RLS).</div>`
+    },
+    coppa: {
+      file: 'lib/screens/register.dart',
+      code: `class RegisterScreen extends StatelessWidget {\n  // CRITICAL: Account creation flow collects PII without minor age gate!\n  void handleRegistration(String email, String password) {\n    AuthService.register(email: email, password: password);\n  }\n}`,
+      badge: '👶 COPPA / MINOR PRIVACY GAP',
+      badgeColor: '#f59e0b',
+      latency: 'AST Parse: 4.1ms · 195 Nations Checked',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#f59e0b;">Violation:</strong> User onboarding collects identity without Date-of-Birth verification or Parental Consent.</div><div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Regulatory Citation:</strong> US COPPA (15 U.S.C. § 6501), India DPDP 2023 Sec 9, GDPR Art 8.</div><div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#fde68a;">Impact: Blocks launch in 195/195 jurisdictions worldwide until DOB gate is enforced.</div>`
+    },
+    fonts: {
+      file: 'lib/main.dart',
+      code: `import 'package:flutter/material.dart';\nimport 'package:google_fonts/google_fonts.dart';\n\nvoid main() {\n  // CRITICAL: Dynamic runtime font download transmits user IP address to Google\n  runApp(const ProductionApp());\n}`,
+      badge: '🔤 GDPR IP EXFILTRATION',
+      badgeColor: '#f59e0b',
+      latency: 'AST Parse: 2.1ms · EU/EEA Blocked',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#f59e0b;">Violation:</strong> Dynamic Google Fonts HTTP requests leak end-user IP addresses without explicit opt-in.</div><div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Regulatory Citation:</strong> Munich Regional Court (Az. 3 O 17493/20), GDPR Art 6(1).</div><div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#fde68a;">Fix: GoogleFonts.config.allowRuntimeFetching = false; Bundle fonts into assets.</div>`
+    },
+    secure: {
+      file: 'services/auth_hardened.js',
+      code: `// Parameterized query with bcrypt password hashing\nconst sql = 'SELECT id, email, pass_hash FROM accounts WHERE email = $1';\nconst result = await db.query(sql, [userEmail]);\n\nif (result.rows.length && await bcrypt.compare(pass, result.rows[0].pass_hash)) {\n  return generateSecureToken(result.rows[0].id);\n}`,
+      badge: '🛡️ CLEAN & COMPLIANT',
+      badgeColor: '#10b981',
+      latency: 'AST Parse: 2.4ms · Zero Flaws',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#10b981;">Assessment:</strong> Code complies with enterprise zero-trust invariants.</div><div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Protections:</strong> Parameterized SQL, zero plaintext secret storage, salt-hashed credentials.</div><div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#a7f3d0;">Readiness: 100% Worldwide Launch Allowed across 195 nations.</div>`
+    }
+  };
+
+  function renderSast(key) {
+    const d = sastScenarios[key];
+    if (!d) return;
+    if (fileEl) fileEl.textContent = d.file;
+    if (codeEl) codeEl.textContent = d.code;
+    if (badgeEl) {
+      badgeEl.textContent = d.badge;
+      badgeEl.style.color = d.badgeColor;
+    }
+    if (latencyEl) latencyEl.textContent = d.latency;
+    if (detailsEl) detailsEl.innerHTML = d.details;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderSast(tab.dataset.sast);
+    });
+  });
+
+  renderSast('secrets');
+}
+
+// Interactive 768-D Vector Matching Simulator for JOB SeArCh Case Study
+function initVectorSimulator() {
+  const tabs = document.querySelectorAll('#vector-sim-tabs .sandbox-pill-btn');
+  const codeEl = document.getElementById('vector-profile-display');
+  const tagEl = document.getElementById('vector-profile-tag');
+  const latencyEl = document.getElementById('vector-latency');
+  const detailsEl = document.getElementById('vector-match-details');
+  if (!tabs.length || !codeEl) return;
+
+  const vectorScenarios = {
+    ai_eng: {
+      tag: '768-D Vector (Qdrant + FastEmbed)',
+      profile: `Candidate Profile:\n- Skills: Vector Search (HNSW, Cosine), Grounded RAG, FastAPI, Python 3.12, Qdrant Cloud\n- Latent Vector (768-d): [-0.042, 0.189, 0.084, ..., -0.112]\n- Target Level: Staff / Lead AI Systems Engineer`,
+      latency: 'Recall: 14.8ms · Cosine Sim: 0.942',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Staff AI Infrastructure Engineer (Vector Systems)</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> Enterprise AI Search Platform</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Grok LLM Pitch: "Joel engineered two-stage decoupled RAG pipelines achieving &lt;15ms HNSW vector recall with 0% arithmetic hallucinations."</div>`
+    },
+    backend: {
+      tag: '768-D Vector (Supabase pgvector)',
+      profile: `Candidate Profile:\n- Skills: Distributed Microservices, FastAPI, Pydantic v2 Rust Core, PostgreSQL MVCC, Docker\n- Latent Vector (768-d): [0.128, -0.056, 0.211, ..., 0.049]\n- Target Level: Senior Backend Systems Engineer`,
+      latency: 'Recall: 12.1ms · Cosine Sim: 0.918',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Senior Systems Engineer (High-Throughput ASGI)</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> Cloud Payments Infrastructure</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Grok LLM Pitch: "Demonstrated expertise building deterministic asynchronous microservices with sub-800ms round trips and zero egress local storage."</div>`
+    },
+    security: {
+      tag: '768-D Vector (AST + DevSecOps)',
+      profile: `Candidate Profile:\n- Skills: Client-Side SAST, SOC 2 Type II, ISO 27001, HIPAA Security, Shannon Entropy, Zero-Knowledge\n- Latent Vector (768-d): [0.071, 0.245, -0.133, ..., 0.182]\n- Target Level: Lead DevSecOps & Compliance Architect`,
+      latency: 'Recall: 16.4ms · Cosine Sim: 0.956',
+      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Lead Application Security Architect</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> HealthTech / FinTech Audit SaaS</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Grok LLM Pitch: "Architect of Compliance Checker: In-browser AST scanner and 195-nation audit matrix eliminating the cloud privacy paradox."</div>`
+    }
+  };
+
+  function renderVector(key) {
+    const d = vectorScenarios[key];
+    if (!d) return;
+    if (tagEl) tagEl.textContent = d.tag;
+    if (codeEl) codeEl.textContent = d.profile;
+    if (latencyEl) latencyEl.textContent = d.latency;
+    if (detailsEl) detailsEl.innerHTML = d.details;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderVector(tab.dataset.vector);
+    });
+  });
+
+  renderVector('ai_eng');
 }
 
 // ============================================================
