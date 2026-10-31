@@ -632,19 +632,19 @@ function initVectorSimulator() {
       tag: '768-D Vector (Qdrant + FastEmbed)',
       profile: `Candidate Profile:\n- Skills: Vector Search (HNSW, Cosine), Grounded RAG, FastAPI, Python 3.12, Qdrant Cloud\n- Latent Vector (768-d): [-0.042, 0.189, 0.084, ..., -0.112]\n- Target Level: Staff / Lead AI Systems Engineer`,
       latency: 'Recall: 14.8ms · Cosine Sim: 0.942',
-      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Staff AI Infrastructure Engineer (Vector Systems)</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> Enterprise AI Search Platform</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Grok LLM Pitch: "Joel engineered two-stage decoupled RAG pipelines achieving &lt;15ms HNSW vector recall with 0% arithmetic hallucinations."</div>`
+      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Staff AI Infrastructure Engineer (Vector Systems)</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> Enterprise AI Search Platform</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Groq LPU / LLM Pitch: "Joel engineered two-stage decoupled RAG pipelines achieving &lt;15ms HNSW vector recall with 0% arithmetic hallucinations."</div>`
     },
     backend: {
       tag: '768-D Vector (Supabase pgvector)',
       profile: `Candidate Profile:\n- Skills: Distributed Microservices, FastAPI, Pydantic v2 Rust Core, PostgreSQL MVCC, Docker\n- Latent Vector (768-d): [0.128, -0.056, 0.211, ..., 0.049]\n- Target Level: Senior Backend Systems Engineer`,
       latency: 'Recall: 12.1ms · Cosine Sim: 0.918',
-      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Senior Systems Engineer (High-Throughput ASGI)</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> Cloud Payments Infrastructure</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Grok LLM Pitch: "Demonstrated expertise building deterministic asynchronous microservices with sub-800ms round trips and zero egress local storage."</div>`
+      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Senior Systems Engineer (High-Throughput ASGI)</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> Cloud Payments Infrastructure</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Groq LPU / LLM Pitch: "Demonstrated expertise building deterministic asynchronous microservices with sub-800ms round trips and zero egress local storage."</div>`
     },
     security: {
       tag: '768-D Vector (AST + DevSecOps)',
       profile: `Candidate Profile:\n- Skills: Client-Side SAST, SOC 2 Type II, ISO 27001, HIPAA Security, Shannon Entropy, Zero-Knowledge\n- Latent Vector (768-d): [0.071, 0.245, -0.133, ..., 0.182]\n- Target Level: Lead DevSecOps & Compliance Architect`,
       latency: 'Recall: 16.4ms · Cosine Sim: 0.956',
-      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Lead Application Security Architect</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> HealthTech / FinTech Audit SaaS</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Grok LLM Pitch: "Architect of Compliance Checker: In-browser AST scanner and 195-nation audit matrix eliminating the cloud privacy paradox."</div>`
+      details: `<div style="margin-bottom:8px;"><strong style="color:#38bdf8;">Matched Role:</strong> Lead Application Security Architect</div><div style="margin-bottom:8px;"><strong style="color:#34d399;">Company:</strong> HealthTech / FinTech Audit SaaS</div><div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:8px 10px; border-radius:6px; font-family:var(--mono); font-size:0.76rem; color:#bae6fd;">Groq LPU / LLM Pitch: "Architect of Compliance Checker: In-browser AST scanner and 195-nation audit matrix eliminating the cloud privacy paradox."</div>`
     }
   };
 
@@ -793,7 +793,7 @@ function initTerminal() {
 <div class="term-line">   • Live: <a href="https://joelaah.github.io/fitness_app/" target="_blank" class="term-accent">https://joelaah.github.io/fitness_app/</a></div>
 <br>
 <div class="term-line"><span class="term-cyan">3. JOB SeArCh</span> (Autonomous Semantic Career Engine)</div>
-<div class="term-line">   • Stack: Flutter Web, FastAPI, Supabase pgvector (768d), Grok LLM, Zero-Knowledge Vault</div>
+<div class="term-line">   • Stack: Flutter Web, FastAPI, Supabase pgvector (768d), Groq LPU / LLM, Zero-Knowledge Vault</div>
 <div class="term-line">   • Video Reel: 1080p full demo with neural AI voiceover in assets/demo_reel.mp4</div>
 <div class="term-line">   • Live: <a href="https://joelaah.github.io/Job-Searcher/" target="_blank" class="term-cyan">https://joelaah.github.io/Job-Searcher/</a></div>
 <br>
@@ -813,7 +813,7 @@ function initTerminal() {
     skills: () => `
 <div class="term-line"><span class="term-cyan">Languages:</span> Dart, Python 3.12, JavaScript (ES6+), SQL, HTML5/CSS3</div>
 <div class="term-line"><span class="term-cyan">Frontend:</span> Flutter (Web & Mobile), BLoC / Riverpod, CanvasKit, Glassmorphism UI</div>
-<div class="term-line"><span class="term-cyan">AI & Vector:</span> Grok LLM (Groq LPU), Supabase pgvector, Qdrant Cloud, Cohere Rerank v3.5, FastEmbed (768d), Gemini Flash</div>
+<div class="term-line"><span class="term-cyan">AI & Vector:</span> Groq LPU / LLM (Groq LPU), Supabase pgvector, Qdrant Cloud, Cohere Rerank v3.5, FastEmbed (768d), Gemini Flash</div>
 <div class="term-line"><span class="term-cyan">Backend:</span> FastAPI, Pydantic v2, Uvicorn, SlowAPI, REST microservices</div>
 <div class="term-line"><span class="term-cyan">Databases:</span> PostgreSQL 15, HNSW cosine index, Firestore, HTML5 localStorage</div>
 <div class="term-line"><span class="term-cyan">Security:</span> Zero-Knowledge client-side RAM vaulting, Anti-SSRF crawler defense</div>`,

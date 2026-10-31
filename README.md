@@ -15,8 +15,8 @@
 | :--- | :--- | :---: | :---: |
 | **🛡️ Compliance Checker** | Multi-framework audit readiness engine (SOC 2, ISO 27001, HIPAA, GDPR) with client-side SAST & secret scanner. | [Launch App ↗](https://joelaah.github.io/compliance-checker/) | [GitHub ↗](https://github.com/joelaah/compliance-checker) |
 | **⚡ PulseFit AI** | Two-stage RAG fitness copilot eliminating 100% of arithmetic hallucinations with sub-15ms vector search. | [Launch App ↗](https://joelaah.github.io/fitness_app/) | [GitHub ↗](https://github.com/joelaah/fitness_app) |
-| **🎯 JOB SeArCh** | Autonomous AI job matching engine with Grok LLM inference, 768-d pgvector latent space & RAM vault. | [Launch App ↗](https://joelaah.github.io/Job-Searcher/) | [GitHub ↗](https://github.com/joelaah/Job-Searcher) |
-| **🕹️ Systems Engineering Lab** | Interactive architecture laboratory with 104 battle-tested distributed systems Q&As and 7 simulators. | [Launch Lab ↗](https://joelaah.github.io/interactive_learning_hub.html) | [Guide ↗](https://github.com/joelaah/fitness_app/blob/main/MASTER_100_INTERVIEW_QUESTIONS_AND_ANSWERS.md) |
+| **🎯 JOB SeArCh** | Autonomous AI job matching engine with Groq LPU / LLM inference, 768-d pgvector latent space & RAM vault. | [Launch App ↗](https://joelaah.github.io/Job-Searcher/) | [GitHub ↗](https://github.com/joelaah/Job-Searcher) |
+| **🕹️ Systems Engineering Lab** | Interactive architecture laboratory with 104 battle-tested distributed systems Q&As and 7 simulators. | [Launch Lab ↗](https://joelaah.github.io/interactive_learning_hub.html) | [Guide ↗](https://github.com/joelaah/fitness_app/blob/main/portfolio/MASTER_100_INTERVIEW_QUESTIONS_AND_ANSWERS.md) |
 | **📄 Interactive Resume** | Clean, printable single-page resume with direct verified project links. | [View Resume ↗](https://joelaah.github.io/resume.html) | — |
 
 ---
@@ -35,7 +35,7 @@
 
 ### 3. 🎯 JOB SeArCh — Autonomous Career Matching Engine
 - **Shared Latent Space**: Projects candidate profiles and live job descriptions into a 768-dimensional latent vector space using Supabase `pgvector` HNSW cosine indexing.
-- **Ultra-Fast Inference**: Grok LLM integration for contextual alignment, custom outreach pitch generation, and role steering.
+- **Ultra-Fast Inference**: Groq LPU / LLM integration for contextual alignment, custom outreach pitch generation, and role steering.
 - **Headless ATS Scraper & RAM Vault**: Multi-platform scraping for Ashby, Greenhouse, Lever, and custom portals with a zero-knowledge client-side RAM credential vault for 1-click autofill.
 
 ---
