@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Vector Search &amp; FastAPI Systems Architecture Lab | Joel Pachuau</title>
   <meta name="description" content="Interactive systems engineering lab exploring high-dimensional HNSW vector search, Qdrant indexing, async FastAPI microservices, and two-stage grounded RAG pipelines.">
+  <link rel="canonical" href="https://joelaah.github.io/interactive_learning_hub.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joel Pachuau Portfolio">
+  <meta property="og:url" content="https://joelaah.github.io/interactive_learning_hub.html">
+  <meta property="og:title" content="Vector Search &amp; FastAPI Systems Architecture Lab | Joel Pachuau">
+  <meta property="og:description" content="Interactive systems engineering lab exploring high-dimensional HNSW vector search, Qdrant indexing, async FastAPI microservices, and two-stage grounded RAG pipelines.">
+  <meta property="og:image" content="https://joelaah.github.io/assets/hero_dashboard.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vector Search &amp; FastAPI Systems Architecture Lab | Joel Pachuau">
+  <meta name="twitter:description" content="Interactive systems engineering lab exploring high-dimensional HNSW vector search, Qdrant indexing, async FastAPI microservices, and two-stage grounded RAG pipelines.">
+  <meta name="twitter:image" content="https://joelaah.github.io/assets/hero_dashboard.jpg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -459,6 +470,52 @@
       color: var(--green-bright);
     }
 
+    /* Inline & Fraction Math Typography */
+    .math-inline {
+      font-family: var(--mono);
+      font-size: 0.9em;
+      color: var(--text-0);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 5px;
+      padding: 1px 6px;
+      white-space: nowrap;
+    }
+
+    .math-expr {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--mono);
+      font-size: 0.88em;
+      color: var(--text-0);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 6px;
+      padding: 3px 9px;
+      vertical-align: middle;
+      margin: 2px 2px;
+    }
+
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      line-height: 1.15;
+      font-size: 0.88em;
+      margin: 0 2px;
+    }
+
+    .math-num {
+      padding: 0 4px 2px;
+      border-bottom: 1px solid var(--text-1);
+    }
+
+    .math-den {
+      padding: 2px 4px 0;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .lab-nav-grid {
@@ -626,7 +683,7 @@
             <div class="info-card">
               <h3>How Qdrant HNSW Works</h3>
               <p>
-                Exact k-Nearest Neighbors ($k\text{-NN}$) requires an $O(N)$ brute-force comparison across millions of vectors—unviable in production. HNSW builds a multi-layer graph reminiscent of a skip-list:
+                Exact k-Nearest Neighbors (<i>k</i>-NN) requires an <i>O</i>(<i>N</i>) brute-force comparison across millions of vectors—unviable in production. HNSW builds a multi-layer graph reminiscent of a skip-list:
               </p>
               <ul class="deep-list">
                 <li><strong>Top Layers (Expressway):</strong> Sparse graph with long-distance edges. The query vector takes large spatial jumps to find the immediate neighborhood.</li>
@@ -837,9 +894,9 @@ async def log_session(
                 In high-dimensional embeddings (768 dimensions), text documents of different lengths generate vectors with dramatically different magnitudes:
               </p>
               <ul class="deep-list">
-                <li><strong>Why Euclidean Distance ($L_2$) Fails:</strong> A 10-word summary and a 500-word article about the same topic have huge Euclidean distance simply because one vector is longer.</li>
-                <li><strong>Why Cosine Similarity Wins:</strong> $\cos(\theta) = \frac{u \cdot v}{\|u\| \|v\|}$ isolates pure angular orientation, ignoring length completely.</li>
-                <li><strong>The $L_2$ Normalization Trick:</strong> If every vector is pre-normalized to unit magnitude ($\|u\| = 1$), the denominator becomes $1$. Cosine search converts into a simple hardware <strong>Dot Product</strong> executed in AVX-512 SIMD assembly.</li>
+                <li><strong>Why Euclidean Distance (<i>L</i><sub>2</sub>) Fails:</strong> A 10-word summary and a 500-word article about the same topic have huge Euclidean distance simply because one vector is longer.</li>
+                <li><strong>Why Cosine Similarity Wins:</strong> <span class="math-expr" role="math" aria-label="cos(theta) = (u dot v) / (||u|| ||v||)">cos(&theta;) = <span class="math-frac"><span class="math-num"><i>u</i> &middot; <i>v</i></span><span class="math-den">&#8214;<i>u</i>&#8214; &#8214;<i>v</i>&#8214;</span></span></span> isolates pure angular orientation, ignoring length completely.</li>
+                <li><strong>The <i>L</i><sub>2</sub> Normalization Trick:</strong> If every vector is pre-normalized to unit magnitude (<span class="math-inline">&#8214;<i>u</i>&#8214; = 1</span>), the denominator becomes <span class="math-inline">1</span>. Cosine search converts into a simple hardware <strong>Dot Product</strong> executed in AVX-512 SIMD assembly.</li>
               </ul>
 
               <div class="tech-pill-list">
@@ -942,8 +999,8 @@ query_vec = embed_model.embed(
                 Naive RAG queries a bi-encoder directly into an LLM context window. PulseFit AI and JOB SeArCh decouple the workload:
               </p>
               <ul class="deep-list">
-                <li><strong>Stage 1 (High Recall):</strong> Qdrant HNSW casts a wide net, retrieving 25 candidates in sub-15ms. Bi-encoders are fast ($O(1)$) but miss cross-token attention.</li>
-                <li><strong>Stage 2 (High Precision):</strong> Cohere Cross-Encoder computes joint attention between the query and all 25 candidates, filtering down to the Top-3 with relevance scores $> 0.65$.</li>
+                <li><strong>Stage 1 (High Recall):</strong> Qdrant HNSW casts a wide net, retrieving 25 candidates in sub-15ms. Bi-encoders are fast (<i>O</i>(1)) but miss cross-token attention.</li>
+                <li><strong>Stage 2 (High Precision):</strong> Cohere Cross-Encoder computes joint attention between the query and all 25 candidates, filtering down to the Top-3 with relevance scores <span class="math-inline">&gt; 0.65</span>.</li>
                 <li><strong>-85% Token Reduction:</strong> Compressing prompt size cuts Time-To-First-Token (TTFT) by 4x and eliminates attention degradation in the LLM.</li>
                 <li><strong>Deterministic Mathematical Shield:</strong> Physical volume totals are computed in Python and injected as read-only facts—eliminating 100% of arithmetic hallucinations.</li>
               </ul>

@@ -267,7 +267,7 @@ img, video {
    ============================================================ */
 .nav-header {
   position: relative;
-  z-index: 100;
+  z-index: 150;
 }
 
 .nav {
@@ -275,6 +275,7 @@ img, video {
   top: 0;
   left: 0;
   right: 0;
+  max-width: 100%;
   z-index: 100;
   padding: 0 clamp(16px, 4vw, 32px);
   transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), backdrop-filter var(--duration) var(--ease);
@@ -448,7 +449,7 @@ img, video {
   background: rgba(3, 7, 18, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  z-index: 99;
+  z-index: 150;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration) var(--ease);
@@ -493,6 +494,12 @@ img, video {
   font-size: 1.8rem;
   color: var(--text-3);
   cursor: pointer;
+  min-width: 40px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   padding: 4px 10px;
   border-radius: 6px;
 }
@@ -531,7 +538,8 @@ img, video {
   font-weight: 600;
 }
 
-.mobile-drawer-actions {
+.mobile-drawer-actions,
+.mobile-drawer-footer {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -2144,6 +2152,56 @@ img, video {
 
 /* 3. Mobile Viewports (<= 640px) */
 @media (max-width: 640px) {
+  .nav {
+    padding: 0 14px;
+  }
+
+  .nav-inner {
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .nav-logo {
+    gap: 9px;
+    font-size: 0.96rem;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .logo-mark {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav-cli-btn {
+    display: none;
+  }
+
+  .nav-cta {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
   .hero {
     padding-top: 100px;
     padding-bottom: 50px;
@@ -2237,6 +2295,13 @@ img, video {
 
 /* 4. Small Mobile Devices (<= 380px) */
 @media (max-width: 380px) {
+  .nav-logo {
+    font-size: 0.9rem;
+  }
+  .nav-cta {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
   .hero h1 {
     font-size: 1.85rem;
   }
@@ -2382,24 +2447,31 @@ img, video {
 
 .proj-gallery-media {
   position: relative;
-  background: #090e1a;
+  background: #070c18;
   overflow: hidden;
-  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid var(--border);
 }
 
 .gallery-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto 0;
 }
 
 .gallery-badge-overlay {
-  position: absolute;
-  top: 16px;
-  left: 16px;
+  position: static;
+  order: -1;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 14px 16px;
+  background: rgba(13, 21, 39, 0.92);
+  border-bottom: 1px solid var(--border);
 }
 
 .proj-gallery-content {
@@ -2677,6 +2749,10 @@ img, video {
   }
   .proj-gallery-card {
     grid-template-columns: 1fr;
+  }
+  .proj-gallery-media {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
   }
   .project-specs-grid {
     grid-template-columns: repeat(2, 1fr);

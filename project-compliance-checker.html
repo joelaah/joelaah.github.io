@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Compliance Checker — System Architecture Case Study | Joel Pachuau</title>
   <meta name="description" content="Technical deep-dive on Compliance Checker: Multi-Framework Audit Readiness Engine (SOC 2, ISO 27001, HIPAA, GDPR) with Client-Side SAST & Zero Cloud Egress.">
+  <link rel="canonical" href="https://joelaah.github.io/project-compliance-checker.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Joel Pachuau Portfolio">
+  <meta property="og:url" content="https://joelaah.github.io/project-compliance-checker.html">
+  <meta property="og:title" content="Compliance Checker — System Architecture Case Study | Joel Pachuau">
+  <meta property="og:description" content="Technical deep-dive on Compliance Checker: Multi-Framework Audit Readiness Engine (SOC 2, ISO 27001, HIPAA, GDPR) with Client-Side SAST &amp; Zero Cloud Egress.">
+  <meta property="og:image" content="https://joelaah.github.io/assets/hero_dashboard.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compliance Checker — System Architecture Case Study | Joel Pachuau">
+  <meta name="twitter:description" content="Technical deep-dive on Compliance Checker: Multi-Framework Audit Readiness Engine (SOC 2, ISO 27001, HIPAA, GDPR) with Client-Side SAST &amp; Zero Cloud Egress.">
+  <meta name="twitter:image" content="https://joelaah.github.io/assets/hero_dashboard.jpg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -188,8 +199,8 @@
             </li>
             <li>
               <strong>Shannon Entropy Calculation:</strong> String literals exceeding 20 characters are evaluated for information entropy:
-              $$\mathcal{H}(X) = -\sum_{i=1}^{n} P(x_i) \log_2 P(x_i)$$
-              Strings with Shannon entropy \(> 3.4\) coupled with token signatures matching AWS keys (`AKIA...`), GitHub PATs (`ghp_...`), JWTs, or private RSA headers are flagged instantly with zero network transmission.
+              <div style="margin: 12px 0; padding: 12px 16px; background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 8px; font-family: var(--mono); font-size: 0.95rem; color: var(--accent); text-align: center;" role="math" aria-label="H(X) equals negative sum from i equals 1 to n of P(x_i) log base 2 of P(x_i)"><i>H</i>(<i>X</i>) = &minus;&sum;<sub><i>i</i>=1</sub><sup><i>n</i></sup> <i>P</i>(<i>x<sub>i</sub></i>) log<sub>2</sub> <i>P</i>(<i>x<sub>i</sub></i>)</div>
+              Strings with Shannon entropy &gt; 3.4 coupled with token signatures matching AWS keys (`AKIA...`), GitHub PATs (`ghp_...`), JWTs, or private RSA headers are flagged instantly with zero network transmission.
             </li>
           </ol>
         </div>
